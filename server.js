@@ -11,7 +11,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // Configuring the database
-const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 const port = process.env.port || 5000;
 mongoose.Promise = global.Promise;
