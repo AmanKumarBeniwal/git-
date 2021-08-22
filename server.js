@@ -16,7 +16,7 @@ const port = process.env.PORT || 5000;
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
-mongoose.connect("mongodb+srv://akknight:2626amankumarbeniwal@orders.g6zhi.mongodb.net/Bike-Solutions", {
+mongoose.connect(process.env.DB_URL, {
 	useNewUrlParser: true,useUnifiedTopology: true 
 }).then(() => {
     console.log("Successfully connected to the database");    
