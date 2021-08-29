@@ -27,8 +27,7 @@ exports.create = (req, res) => {
     note.save()
     .then(data => {
         res.send(
-             "The Data uploaded successfully"
-            //data
+            data
             );
     }).catch(err => {
         res.status(500).send({
