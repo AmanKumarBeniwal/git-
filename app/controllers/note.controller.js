@@ -51,24 +51,23 @@ exports.findAll = (req, res) => {
 
 // Find a single note with a noteId
 exports.findOne = (req, res) => {
-    Note.findOne({Uid:req.params.noteId})
-    .then(note => {
-        if(!note) {
-            return res.status(404).send({
-                error: "Note not found with id " + req.params.noteId
-            });            
+    Note.exists({Uid:req.query.Uid},function(err,results) {
+        if (err) {
+            res.send(err);
+        } else {
+            if (results) {
+                Note.findOne({Uid:req.query.Uid},function(err,datamodal) {
+                    if (err) {
+                        res.send(err);
+                    } else {
+                        res.send(datamodal);
+                    }})
+            } else {
+                res.send(results);
+            }
         }
-        res.send(note);
-    }).catch(err => {
-        if(err.kind === 'ObjectId') {
-            return res.status(404).send({
-                error: "Note not found with id " + req.params.noteId
-            });                
-        }
-        return res.status(500).send({
-            error: "Error retrieving note with id " + req.params.noteId
-        });
     });
+
 };
 
 // Update a note identified by the noteId in the request
