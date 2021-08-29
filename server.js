@@ -27,7 +27,7 @@ mongoose.connect(process.env.DB_URL, {
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
+    res.json({"message": "Welcome to BikeSolutions Store Page."});
 });
 
 require('./app/routes/note.routes.js')(app);
