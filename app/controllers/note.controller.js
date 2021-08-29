@@ -51,7 +51,7 @@ exports.findAll = (req, res) => {
 
 // Find a single note with a noteId
 exports.findOne = (req, res) => {
-    Note.findById(req.params.noteId)
+    Note.findOne({Uid:req.params.noteId})
     .then(note => {
         if(!note) {
             return res.status(404).send({
